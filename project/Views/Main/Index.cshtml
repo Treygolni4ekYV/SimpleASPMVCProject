@@ -1,0 +1,76 @@
+﻿@model OpenCommentsView
+
+@{
+    //установка для кнопки назад
+    string pastClassText = "page-item disabled";
+    if(Model.pastPagesNumber > 0){
+        pastClassText = "page-item";
+    }
+
+    //установка для кнопки вперет
+    string nextClassText = "page-item disabled";
+    if(Model.nextPagesNumber > 0){
+        nextClassText = "page-item";
+    }
+
+
+    int pastPageNumber = Model.pageNumber - 1;
+    int nextPageNumber = Model.pageNumber + 1;
+}
+
+<link href="~/css/index.css" rel="stylesheet"/>
+
+<div class="container">
+    <div class="row text-center">
+        <label style="font-size: 48px;">
+            Комментарии
+        </label>
+    </div>
+    
+    @foreach(CommentView comment in Model.commentsToView){
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-3"></div>
+            <div class="col">
+                <div class="container text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-5">
+                    <div class="row">
+                        <div class="col-3">
+                            @comment.userName
+                        </div>
+                        <div class="col">
+                            @comment.message
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    }
+
+    <div class="nav-bar">
+        <nav>
+            <ul class="pagination">
+                <li class="@pastClassText">
+                    <a class="page-link" href="~/Main/Index?page=@pastPageNumber">Previous</a>
+                </li>
+
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link">@Model.pageNumber</a>
+                </li>
+                
+                <li class="@nextClassText">
+                    <a class="page-link" href="~/Main/Index?page=@nextPageNumber">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="row" style="margin-top: 30px; margin-left: 10%; margin-right: 10%;">
+        <a href="~/User/Create">
+            <button type="button" class="btn btn-primary">Создать пользователя</button>
+        </a>
+        <a href="~/Main/Create" style="margin-top: 5px;">
+            <button type="button" class="btn btn-primary">Новое сообщение</button>
+        </a>
+    </div>
+
+</div>

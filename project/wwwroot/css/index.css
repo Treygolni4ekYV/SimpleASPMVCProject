@@ -1,0 +1,30 @@
+/*.comment-block{
+    background: lightgray;
+    height: auto;
+    display: inline-block;
+}
+
+.comment-container-name{
+    background: gray;
+    position: relative;
+    margin-top: 5px;
+}
+
+.comment-container-message{
+    background: darkgray;
+    position: relative;
+    margin-top: 20px;
+}
+*/
+
+.title-label{
+    font-size: 48px;
+    margin: 5px;
+}
+
+.nav-bar{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
